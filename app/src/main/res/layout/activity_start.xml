@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".ui.StartActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginHorizontal="40dp"
+        android:orientation="vertical">
+        <Button
+            android:layout_marginTop="30dp"
+            android:onClick="startTest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="START"
+            android:background="@drawable/nextbuttonback"
+            android:textColor="@color/background"
+            android:textSize="30sp"/>
+        <Button
+            android:onClick="openLastResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/nextbuttonback"
+            android:text="LAST RESULT"
+            android:layout_marginBottom="20dp"
+            android:textColor="@color/background"
+            android:textSize="30sp"/>
+        <Button
+            android:onClick="openSettings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:text="SETTINGS"
+            android:background="@drawable/nextbuttonback"
+            android:textColor="@color/background"
+            android:textSize="30sp"/>
+
+    </LinearLayout>
+
+</FrameLayout>
