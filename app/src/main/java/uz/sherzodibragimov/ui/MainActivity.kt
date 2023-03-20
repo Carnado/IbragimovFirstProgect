@@ -31,8 +31,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         loadViews()
         startWork()
-        setDataToView()
         setActionsToView()
+        setDataToView()
+
 
 
     }
@@ -47,6 +48,20 @@ class MainActivity : AppCompatActivity() {
              }
          }
         nextButton?.setOnClickListener {
+            if (nextButton?.text.toString()=="FINISH"){
+                gameController.let {
+                    if (it?.isFinished() == true){
+                    val intent=Intent(this@MainActivity,FinishActivity::class.java)
+                    val bundle=Bundle()
+                    bundle.putInt(FinishActivity.TRUES,it.getTotalTruCount())
+                    bundle.putInt(FinishActivity.WRONGS,it.getTotalWrongCount())
+                    bundle.putInt(FinishActivity.SKIPS,it.getTotalSkipped())
+                    intent.putExtras(bundle)
+                    startActivity(intent)
+//                    finish()
+                } }
+
+            }
             setDataToView()
         }
     }
@@ -58,18 +73,19 @@ class MainActivity : AppCompatActivity() {
         val variantText=radioButton.text.toString()
         gameController.let {
             it?.checkAnswer(variantText)
-            if (it?.isFinished() == true){
-                val intent=Intent(this@MainActivity,FinishActivity::class.java)
-                val bundle=Bundle()
-                bundle.putInt(FinishActivity.TRUES,it.getTotalTruCount())
-                bundle.putInt(FinishActivity.WRONGS,it.getTotalWrongCount())
-                bundle.putInt(FinishActivity.SKIPS,it.getTotalSkipped())
-                intent.putExtras(bundle)
-                startActivity(intent)
-                finish()
-            }else{
+//            if (it?.isFinished() == true){
+//                val intent=Intent(this@MainActivity,FinishActivity::class.java)
+//                val bundle=Bundle()
+//                bundle.putInt(FinishActivity.TRUES,it.getTotalTruCount())
+//                bundle.putInt(FinishActivity.WRONGS,it.getTotalWrongCount())
+//                bundle.putInt(FinishActivity.SKIPS,it.getTotalSkipped())
+//                intent.putExtras(bundle)
+//                startActivity(intent)
+//                finish()
+//            }else{
             nextButton?.isEnabled=true
-            }
+
+//            }
         }
     }
 
@@ -100,6 +116,7 @@ class MainActivity : AppCompatActivity() {
         nextButton?.isEnabled=false
         gameController?.let {c->
 
+
             levelView?.text="Level :${c.getCurrentLeve()}"
             totalView?.text="Total :${c.getTotalLevel()}"
 
@@ -118,6 +135,9 @@ class MainActivity : AppCompatActivity() {
             }
 
         }
+
+    }
+    fun openLastActivity(view: View){
 
     }
 }
